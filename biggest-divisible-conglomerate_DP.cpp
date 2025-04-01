@@ -44,7 +44,11 @@ vector<int> biggest_divisible_conglomerate(vector<int> input){
         int cur_element = input[i];
         for(int j = i+1; j < n;j++){
             
+            //analysis:
             //algorithm：if a%b=0, b%c=0, then a%c should be = 0 too. We make dynamic table base on that.
+            //it allow us to divide those big problem to smaller problems. Like in our table, we can use the bottom of table to top of table
+            //So, we can build the table from bottom to top and eventually complete it
+            
             if (input[j]%cur_element==0 && answers[i].size() >= answers[j].size()){
                 answers[j] = {input[j]};
                 // add all elements from the answers at i spot into the answers at j spot
